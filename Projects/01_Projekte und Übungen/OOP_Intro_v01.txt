@@ -1,0 +1,40 @@
+#include <Arduino.h>
+
+class Student{
+
+  private:
+    // nur innerhalb dieser Klasse bekannt.
+    String name;
+    String last_name;
+
+
+  public:
+    // auch außerhalb der Klasse bekannt. 
+    Student(String vorname){
+      name = vorname;
+    }
+    String getName(){
+      return name;
+    }
+
+  protected:
+    // die innerhalb der Klasse bekannt sind und auch den Erben bekannt sind.
+
+};
+
+Student edi = Student("Markus");
+Student julia = Student("Julia");
+
+
+void setup()
+{
+  Serial.begin(9600);
+
+  Serial.println(edi.getName());
+  Serial.println(julia.getName());
+
+}
+
+void loop()
+{
+}

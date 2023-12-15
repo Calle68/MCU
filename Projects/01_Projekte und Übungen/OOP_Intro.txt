@@ -1,0 +1,65 @@
+main.cpp
+
+#include <Arduino.h>
+#include "person.h"
+
+person edi = person("Marcus", "Edi", "M", 180);
+person bot = person("Bot", "Pixeledi", "X", 25);
+person julia = person("Julia", "Rohrer", "W", 175);
+
+void setup()
+{
+  Serial.begin(115200);
+  edi.printPersonDetail();
+  bot.printPersonDetail();
+  julia.printPersonDetail();
+}
+
+void loop()
+{
+  
+}
+
+person.cpp
+
+#include "person.h"
+
+person::person(String _firstname, String _lastname, String _sex, int _height){
+    firstname = _firstname;
+    lastname = _lastname;
+    sex = _sex;
+    height = _height;
+
+}
+
+void person::printPersonDetail(){
+    Serial.printf("Name %s Alter %d Größe %d Geschlecht %s",firstname, age, height, sex);
+}
+
+
+person.h
+
+#ifndef person_h
+#define person_h
+
+#include <Arduino.h>
+
+class person
+{
+private:
+    int age;
+    int height;
+    String firstname;
+    String lastname;
+    String sex;
+    String adresse;
+    String zipcode;
+    String country;
+
+public:
+    person(String _firstname, String _lastname, String _sex, int _height);
+    void printAll();
+    void printPersonDetail();
+};
+
+#endif
